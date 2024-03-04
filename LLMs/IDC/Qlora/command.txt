@@ -1,0 +1,21 @@
+Config:
+source bigdl-llm-init -t
+
+
+Training:
+python ./qloraTune.py --repo-id-or-model-path meta-llama/Llama-2-7b-hf --dataset imdb
+
+
+Merging:
+python ./merger.py --repo-id-or-model-path meta-llama/Llama-2-7b-hf --adapter_path ./trained/ --output_path ./models/
+
+
+Generation:
+python ./generator.py --repo-id-or-model-path ./models/ 
+
+
+--prompt Who said the quote: Be yourself; everyone else is already taken.--n-predict 32
+
+
+
+
